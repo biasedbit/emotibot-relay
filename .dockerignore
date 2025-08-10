@@ -1,0 +1,12 @@
+# Ignore everything by default
+*
+
+# Only include files needed for the Docker build
+!pyproject.toml
+!uv.lock
+!emotibot_relay/
+!emotibot_relay/__init__.py
+!emotibot_relay/cli.py
+!emotibot_relay/models.py
+!emotibot_relay/server.py
+!emotibot_relay/store.py

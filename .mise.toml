@@ -1,0 +1,4 @@
+[tools]
+  flyctl = "0.3"
+  python = "3.12"
+  uv = "0.8.7"
