@@ -75,34 +75,38 @@ Establishes an SSE connection to receive real-time mood updates.
 The project includes CLI tools to test and interact with the service:
 
 ```bash
-# Get current mood (formatted display)
+# Get current mood from localhost (formatted display)
 mood-get
-# Get current mood (raw JSON)
+# Get current mood from localhost (raw JSON)
 mood-get --json
-# Get current mood with custom server URL (for local development)
-mood-get --url http://localhost:8080
+# Get current mood from production server
+mood-get --url https://emotibot-relay.fly.dev
+# Using curl
+curl http://localhost:8000/mood
 
-# Update mood
+# Update mood from localhost
 mood-set happy
-# Update mood with custom server URL (for local development)
-mood-set content --url http://localhost:8080
+# Update mood in the production server
+mood-set happy --url https://emotibot-relay.fly.dev
+# Using curl
+curl -X PUT --json '{"mood":"happy"}' https://emotibot-relay.fly.dev/mood
 
-# Stream mood updates
+# Stream mood updates from localhost
 mood-stream
-# In a different terminal
-mood-set productive
+# Stream mood updates from production server
+mood-stream --url https://emotibot-relay.fly.dev
+# Using curl
+curl -N https://emotibot-relay.fly.dev/mood/stream
 ```
 
 ### Updating the mood from the model
 
 ```javascript
-const response = await fetch("https://emotibot-relay.fly.dev/mood", {
+await fetch("https://emotibot-relay.fly.dev/mood", {
   method: "PUT",
+  headers: { "Content-Type": "application/json" },
   body: JSON.stringify({ mood: "happy" }),
 });
-
-const data = await response.json();
-console.log(data);
 ```
 
 ## Development
