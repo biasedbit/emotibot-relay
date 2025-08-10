@@ -82,7 +82,7 @@ mood-get --json
 # Get current mood from production server
 mood-get --url https://emotibot-relay.fly.dev
 # Using curl
-curl http://localhost:8000/mood
+curl https://emotibot-relay.fly.dev/mood
 
 # Update mood from localhost
 mood-set happy
